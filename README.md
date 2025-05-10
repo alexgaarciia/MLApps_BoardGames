@@ -11,7 +11,7 @@ We combine Natural Language Processing and recommender systems to analyze board 
 - Dashboard: Built in Dash, allowing users to explore the dataset and receive personalized, explainable recommendations.
 
 ## 📂 Repository Resources
-It might be convenient to take a look at the files we have created to guide you through our repo. We have made available different `.md` files explaining:
+To help you navigate the repository, we have included several .md files explaining:
 - [Project Structure](https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/docs/REPO_STRUCTURE.md): Overview of how the repository is organized and what each folder/file does.
 - [Final Report](https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/docs/REPORT.md): Full explanation of the methodology, techniques, and results from our analysis.
 - [Dashboard Instructions](https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/docs/DASHBOARD.md): How to run the interactive dashboard.
