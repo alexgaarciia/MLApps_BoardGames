@@ -277,48 +277,50 @@ A key aspect to note is that users with a high number of ratings and diverse gam
 
 Another problem to take into consideration is cold start. When the user is trying to predict a rating of a game and it does not have any rating yet, it is impossible to accurately suggest a rating. Therefore, some methods are used to tackle this problem: 
 
-**1. Cold start with the user choosing some games:** The user can provide some games they like, which are automatically set to a rating of 9 to simulate prior interactions.
-**2. Cold start with popularity-based recommender:** Another option implemented is a popularity based recommender system, in which the user is suggested games liked by the vast majority of people. 
+1. **Cold start with the user choosing some games:** The user can provide some games they like, which are automatically set to a rating of 9 to simulate prior interactions.
 
-To improve the diversity of the recommendations and avoid suggesting only famous games, clustering is applied using their GloVe embeddings. The Elbow Method (_Figure 8_) is used to choose the number of clusters by analyzing the within-cluster variance. Based on the curve, 8 clusters are selected. To support this decision, t-SNE is implemented to confirm that the games formed different clusters.
+2. **Cold start with popularity-based recommender:** Another option implemented is a popularity based recommender system, in which the user is suggested games liked by the vast majority of people.
 
-<br>
-<div align="center">
-<table>
-  <tr>
-    <td style="text-align: center;">
-      <img src="https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/images/elbow.png" width="500"/><br>
-      <em>Figure 8: Elbow Method</em>
-    </td>
-    <td style="text-align: center;">
-      <img src="https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/images/tsne.png" width="430"/><br>
-      <em>Figure 9: t-SNE of K-Means Clusters</em>
-    </td>
-  </tr>
-</table>
+   To improve the diversity of the recommendations and avoid suggesting only famous games, clustering is applied using their GloVe embeddings. The Elbow Method (_Figure 8_) is used to choose the number of clusters by analyzing the within-cluster variance. Based on the curve, 8 clusters are selected. To support this decision, t-SNE is implemented to confirm that the games formed different clusters.
 
-</div>
-<br>
-
-One top-rated game is then selected from each cluster, based on a popularity score that balances the average rating and the number of ratings:
-
-<div align="center">
-
-$$
-\text{Popularity Score} = \frac{\text{Average Rating} \times \text{Number of Ratings}}{\text{Number of Ratings} + 10}
-$$
-
-</div>
-
-This ensures that games with many high ratings are favored, while games with only a few ratings are down-weighted to avoid overestimating their quality. For example, if Game A has 1 review and it is a perfect 10, but Game B has 500 reviews and its average rating is 8.9, only considering the average rating is risky and can’t be trusted, that is why games with fewer reviews are down-weighted.
+   <br>
+   <div align="center">
+   <table>
+     <tr>
+       <td style="text-align: center;">
+         <img src="https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/images/elbow.png" width="500"/><br>
+         <em>Figure 8: Elbow Method</em>
+       </td>
+       <td style="text-align: center;">
+         <img src="https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/images/tsne.png" width="430"/><br>
+         <em>Figure 9: t-SNE of K-Means Clusters</em>
+       </td>
+     </tr>
+   </table>
+   
+   </div>
+   <br>
+   
+   One top-rated game is then selected from each cluster, based on a popularity score that balances the average rating and the number of ratings:
+   
+   <div align="center">
+   
+   $$
+   \text{Popularity Score} = \frac{\text{Average Rating} \times \text{Number of Ratings}}{\text{Number of Ratings} + 10}
+   $$
+   
+   </div>
+   
+   This ensures that games with many high ratings are favored, while games with only a few ratings are down-weighted to avoid overestimating their quality. For example, if Game A has 1 review and it is a perfect 10, but Game B has 500 reviews and its average rating is 8.9, only considering the average rating is risky and can’t be trusted, that is why games with fewer reviews are down-weighted.
 
 ### 3.3. Collaborative Filtering
 Contrary to content-based systems, collaborative filtering recommender systems are based solely on user-item interactions. To explore the functionalities of this technique, the ‘Surprise’ library is used. The surprise dataset contains just three fields: User ID, Game ID and Rating. Two parallel methods are implemented: neighbour and latent methods.
 
 The different collaborative filtering neighbour methods consists of predicting relevant games based on the ratings of similar users (user-based) or similar items (item-based). However, for this project only the item-based approach is explored. Two algorithms are implemented: 
 
-**1. KNNBasic:** Uses raw ratings and predicts a user’s rating for a game by computing a weighted average of ratings from similar games.
-**2. KNNWithMeans:** An extension of the basic approach by adjusting ratings based on item mean ratings for user bias normalization.
+1. **KNNBasic:** Uses raw ratings and predicts a user’s rating for a game by computing a weighted average of ratings from similar games.
+
+2. **KNNWithMeans:** An extension of the basic approach by adjusting ratings based on item mean ratings for user bias normalization.
 
 The first step to find the best neighbours method is to implement hyperparameter exploration: the maximum and minimum number of neighbours. A wide range of parameters are tested and plotted the influence in the RMSE metric (_Figures 10-11_), which allowed for a reduction in options in the GridSearch. 
 
@@ -346,8 +348,9 @@ Moving on with the second collaborative filtering approach, latent factor method
 
 The first latent factor method used is SVD, which is a powerful matrix factorization technique used to decompose the user-item  matrix in a lower-dimensional space. This way one can easily predict missing ratings effectively. In order to train the SVD model, some parameters must be fine tuned. Firstly, the number of latent dimensions is assessed. Two approaches are tested:
 
-**1. Biased = False:** Only the user and item embeddings are used to reconstruct ratings.
-**2. Biased = True:** Apart from using the latent embeddings, bias is incorporated into the user and items. This bias controls the diversity of ratings the users can give. For example, some users can give significantly higher ratings to some games than another user with the same likes, but more moderate mindset. 
+1. **Biased = False:** Only the user and item embeddings are used to reconstruct ratings.
+
+2. **Biased = True:** Apart from using the latent embeddings, bias is incorporated into the user and items. This bias controls the diversity of ratings the users can give. For example, some users can give significantly higher ratings to some games than another user with the same likes, but more moderate mindset. 
 
 The approach with the ‘biased’ parameter provided lower ranges of RMSE when training the SVD model, as observed in the figures below:
 
