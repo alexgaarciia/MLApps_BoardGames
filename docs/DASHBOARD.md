@@ -12,7 +12,7 @@ Before running the notebook, some things must be considered:
   6. Download the files ['knn_model.pkl'](https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/models/knn_model.pkl) and ['svd_model.pkl'](https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/models/svd_model.pkl) and put them inside.
   7. Run the notebook.
 
-In case this second path is followed, your folder must look like this:
+In case the second path is followed, your folder must look like this:
 ```
 📁 root
 ├── 📂 assets
