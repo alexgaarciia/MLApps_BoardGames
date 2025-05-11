@@ -33,7 +33,7 @@ This document describes the structure of the repository for the final project. Y
 Before running the notebook, some considerations must be taken into account:
 
 ##### Task 1
-- Required dataset: boardgames_4122
+- Required dataset: 'boardgames_4122'
 - To run the GloVe embedding code, two files are needed: glove.6B.100d.txt and glove.6B.300d.txt, which can be found at [GloVe Wikipedia 2014 + Gigaword](https://www.kaggle.com/datasets/gerwynng/glove-wikipedia-2014-gigaword-5)
 
 ##### Task 2
