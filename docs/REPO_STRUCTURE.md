@@ -29,7 +29,7 @@ This document describes the structure of the repository for the final project. Y
 ```
 
 
-## 📄 Board_Games_NLP_Analysis.ipynb
+### 📄 Board_Games_NLP_Analysis.ipynb
 Before running the notebook, some considerations must be taken into account:
 
 ##### Task 1
