@@ -12,7 +12,8 @@ This document describes the structure of the repository for the final project. Y
 │   ├── 📄 boardgames_4122.csv
 │   ├── 📄 boardgames_4122_clean.csv
 │   ├── 📄 boardgames_4122_clean_glove_dual_tone.csv
-│   └── 📄 boardgames_4122_clean_glove_dual_tone_bert_popularity.csv
+│   ├── 📄 boardgames_4122_clean_glove_dual_tone_bert_popularity.csv
+│   └── 📄 filtered_reviews.csv
 ├── 📂 docs -> Contains the dashboard instructions, report and structure of the repository
 │   ├── 📄 DASHBOARD.md
 │   ├── 📄 REPORT.md
