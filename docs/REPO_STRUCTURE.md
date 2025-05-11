@@ -27,7 +27,7 @@ This document describes the structure of the repository for the final project. Y
 ├── 📄 dashboard.ipynb -> Dashboard code
 └── 📄 data_preparation.ipynb -> Data scrapping and preparation code
 ```
-
+---
 
 ### 📄 Board_Games_NLP_Analysis.ipynb
 Before running the notebook, some considerations must be taken into account:
