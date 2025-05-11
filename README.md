@@ -14,6 +14,7 @@ We combine Natural Language Processing and recommender systems to analyze board 
 To help you navigate the repository, we have included several .md files explaining:
 - [Project Structure](https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/docs/REPO_STRUCTURE.md): Overview of how the repository is organized and what each folder/file does.
 - [Final Report](https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/docs/REPORT.md): Full explanation of the methodology, techniques, and results from our analysis.
+- [Main Notebook Instructions](https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/docs/NOTEBOOKS.md): How to run the project notebook.
 - [Dashboard Instructions](https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/docs/DASHBOARD.md): How to run the interactive dashboard.
 
 ## ✍️ Authors
