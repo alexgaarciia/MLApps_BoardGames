@@ -17,6 +17,9 @@ To help you navigate the repository, we have included several .md files explaini
 - [Main Notebook Instructions](https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/docs/NOTEBOOKS.md): How to run the project notebook.
 - [Dashboard Instructions](https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/docs/DASHBOARD.md): How to run the interactive dashboard.
 
+## 🎥 Explanatory YouTube Video
+You can also take a look at this video, where we explain a  dashboard that we have created to show our project results! [Click here](https://www.youtube.com/watch?v=lnl28FGtGdU)
+
 ## ✍️ Authors
 - Miguel Fernández Lara
 - Alejandro Leonardo García Navarro
