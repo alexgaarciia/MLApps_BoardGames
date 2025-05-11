@@ -221,13 +221,7 @@ This indicates that SBERT is better at distinguishing between descriptions, sinc
 </div>
 <br>
 
-To implement the content-based recommender system, other metadata is used for filtering: minimum age, number of players, rating and playing time. Therefore, given a user and the former metadata, and including the games the user has rated positively, corresponding recommendations are returned to the user. The predicted score for a candidate game is computed using a similarity-weighted average of the user’s past ratings, as shown in the formula below:
-
-<div align="center">
-  <img src="https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/images/formula1.png" width="300"/>
-</div>
-
-After testing a few iterations of the recommender system with different users, it is important to note that very similar games in theme are suggested. To fix this, some diversity approaches are implemented. 
+To implement the content-based recommender system, other metadata is used for filtering: minimum age, number of players, rating and playing time. Therefore, given a user and the former metadata, and including the games the user has rated positively, corresponding recommendations are returned to the user. After testing a few iterations of the recommender system with different users, it is important to note that very similar games in theme are suggested. To fix this, some diversity approaches are implemented. 
 
 MMR (Maximal Marginal Relevance) balances relevance and novelty. It avoids choosing redundant items by selecting documents that are coherent with the user but diverse from the items that have been already selected. MMR is applied iteratively to re-rank the top candidate items. At each step, the item with the highest MMR score is selected using the formula:
 
@@ -271,7 +265,11 @@ To add explainability of the recommended games, some descriptions are added to e
 For example, an explanation for a recommendation can be: “I recommend this game because you liked ‘CATAN’ (you rated it 8.8/10). This game has a ‘dark’ feeling and is ‘competitive’”. Such explanations support the dashboard by helping users understand the reasoning behind each recommendation, thereby reducing the perception of the system as a black box.
 
 ### 3.2. Hybrid Model Predictions
-Users may wonder what could be the rating predicted if they choose a new game they haven’t played before. This is the idea behind the implementation of the hybrid model: based on the content of the games and the ratings the user has given to the games in its profile, the new game obtains a prediction of the rating using a weighted average between similarity and ratings.
+Users may wonder what could be the rating predicted if they choose a new game they haven’t played before. This is the idea behind the implementation of the hybrid model: based on the content of the games and the ratings the user has given to the games in its profile, the new game obtains a prediction of the rating using a weighted average between similarity and ratings. The predicted score for a candidate game is computed using a similarity-weighted average of the user’s past ratings, as shown in the formula below:
+
+<div align="center">
+  <img src="https://github.com/alexgaarciia/MLApps_BoardGames/blob/main/images/formula1.png" width="300"/>
+</div>
 
 A key aspect to note is that users with a high number of ratings and diverse games experience some bias in the predicted outcome because the prediction is close to the approximation of the mean of the rated games. To avoid this problem, only the top-k similar games are used as the set for prediction. 
 
