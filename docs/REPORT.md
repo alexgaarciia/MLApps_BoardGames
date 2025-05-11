@@ -38,7 +38,7 @@ To explore this at scale, NLP is used to uncover hidden patterns, identify theme
 
 ## 2. Task 1: Text Preprocessing and Vectorization
 ### 2.1. Data Collection
-The board games are scrapped from the website BGG [1], in which a complete collection of worldwide games is shown. To do so, the BoardGameGeek XML API [2] is accessed to help us scrape the corresponding fields about different games. 
+The board games are scrapped from the website BGG [<a href="#ref1">1</a>], in which a complete collection of worldwide games is shown. To do so, the BoardGameGeek XML API [<a href="#ref2">2</a>] is accessed to help us scrape the corresponding fields about different games. 
 
 A database of around **4122** games is created with the following fields: 
 | **Text Variables** | **Numerical Variables** |
@@ -51,7 +51,7 @@ A database of around **4122** games is created with the following fields:
 
 For example, for the game ‘chess’, the following description is found: “Chess is a two-player, abstract strategy board game that represents medieval warfare on an 8x8 board with alternating light and dark squares. Opposing pieces, [...]".
 
-Besides, another database containing a couple million of reviews from users is obtained from Kaggle to deepen the recommender system, called BoardGameGeek Reviews [3]. This dataset contains the user name, id of the game, review, and rating. 
+Besides, another database containing a couple million of reviews from users is obtained from Kaggle to deepen the recommender system, called BoardGameGeek Reviews [<a href="#ref3">3</a>]. This dataset contains the user name, id of the game, review, and rating. 
 
 ### 2.2. Data Cleaning and Preprocessing
 The library SpaCy is used to create the NLP pipeline to process the descriptions. The steps taken include:
@@ -77,7 +77,7 @@ On the other hand, TF-IDF is the refinement of BoW, which is done by giving a we
 
 
 ### 2.4. Word Embeddings
-GloVe (Global Vectors for Word Representation) is used for word embeddings, capturing the semantic similarity between words by learning co-occurrence statistics. Gensim pretrained models _glove-wiki-gigaword-100_ [4] and _glove-wiki-gigarword-300_ [5] are used to provide a 100 and 300-dimensional representation of the corpus. Two versions of GloVe are compared to assess how embedding dimensionality affects the semantic differences between descriptions and analyse the trade-off between expressiveness and computational cost.
+GloVe (Global Vectors for Word Representation) is used for word embeddings, capturing the semantic similarity between words by learning co-occurrence statistics. Gensim pretrained models _glove-wiki-gigaword-100_ [<a href="#ref4">4</a>] and _glove-wiki-gigarword-300_ [<a href="#ref5">5</a>] are used to provide a 100 and 300-dimensional representation of the corpus. Two versions of GloVe are compared to assess how embedding dimensionality affects the semantic differences between descriptions and analyse the trade-off between expressiveness and computational cost.
 
 To capture the general meaning of the description, the average vector is computed by averaging the embedding number of all known words in a document. To interpret and understand the structure of these embeddings, 2D PCA is performed to reduce their high dimensionality, as observed in _Figure 2_.
 
@@ -162,7 +162,7 @@ To understand the emotion and vibe the board games have, sentiment analysis is a
 - Emotional tones: _funny, dark, happy, serious, nostalgic, intense_.
 - Game vibes: _strategic, cooperative, competitive, family-friendly, chaotic, educational_.
 
-The model used is _facebook/bart-large-mnli_ [6], found in Hugging Face. The main reason why this pretrained transformer is chosen is because it was trained on the Multi-Genre Natural Language Inference (MNLI) dataset [7], which enables it to decide whether a given label can be inferred from the text, making it ideal for the project case. Some considerations must be taken into account about the model before predicting the labels:
+The model used is _facebook/bart-large-mnli_ [<a href="#ref6">6</a>], found in Hugging Face. The main reason why this pretrained transformer is chosen is because it was trained on the Multi-Genre Natural Language Inference (MNLI) dataset [<a href="#ref7">7</a>], which enables it to decide whether a given label can be inferred from the text, making it ideal for the project case. Some considerations must be taken into account about the model before predicting the labels:
 
 - They are trained on natural language, not preprocessed or lemmatized text.
 - They expect raw sentences to understand semantic tones.
@@ -199,7 +199,7 @@ The first approach used to personalize game suggestions is a content-based recom
 
 For this task, GloVe embeddings are used and, to observe how similar the descriptions are, the cosine similarity is measured. Due to the complexity and detail of the descriptions, the similarity between descriptions is high, with a left skewed distribution with mean 0.70 and low variance. 
 
-Another embedding (Sentence-BERT [8]) is applied to try to improve the relationships between descriptions by capturing the context more accurately. This captures deep semantic context using attention but, as observed in _Figure 7_, the distribution of cosine similarities is much broader and centered at lower values compared to GloVe.
+Another embedding (Sentence-BERT [<a href="#ref8">8</a>]) is applied to try to improve the relationships between descriptions by capturing the context more accurately. This captures deep semantic context using attention but, as observed in _Figure 7_, the distribution of cosine similarities is much broader and centered at lower values compared to GloVe.
 
 This indicates that SBERT is better at distinguishing between descriptions, since it spreads out the similarity scores more. However, because the recommender system depends on having higher similarity values to find related games, the original GloVe embeddings are kept for building the recommendations and provide more stable and intuitive suggestions.
 
@@ -405,18 +405,18 @@ One of the main difficulties we faced is finding the correct embedding for the d
 <br>
 
 ## 6. References
-[1] BoardGameGeek, “BoardGameGeek - The world's largest source for board game information,” accessed: 09/05/2025. [Online]. Available: https://boardgamegeek.com/
+<a name="ref1"></a> [1] BoardGameGeek, “BoardGameGeek - The world's largest source for board game information,” accessed: 09/05/2025. [Online]. Available: https://boardgamegeek.com/  
 
-[2] BoardGameGeek, “BGG XML API2,” accessed: 09/05/2025. [Online]. Available: https://boardgamegeek.com/wiki/page/BGG_XML_API2
+<a name="ref2"></a> [2] BoardGameGeek, “BGG XML API2,” accessed: 09/05/2025. [Online]. Available: https://boardgamegeek.com/wiki/page/BGG_XML_API2  
 
-[3] J. van Elteren, “BoardGameGeek Reviews,” Kaggle, 2022, accessed: 09/05/2025. [Online]. Available: https://www.kaggle.com/datasets/jvanelteren/boardgamegeek-reviews
+<a name="ref3"></a> [3] J. van Elteren, “BoardGameGeek Reviews,” Kaggle, 2022, accessed: 09/05/2025. [Online]. Available: https://www.kaggle.com/datasets/jvanelteren/boardgamegeek-reviews  
 
-[4] fse, “glove-wiki-gigaword-100,” Hugging Face, accessed: 09/05/2025. [Online]. Available: https://huggingface.co/fse/glove-wiki-gigaword-100
+<a name="ref4"></a> [4] fse, “glove-wiki-gigaword-100,” Hugging Face, accessed: 09/05/2025. [Online]. Available: https://huggingface.co/fse/glove-wiki-gigaword-100  
 
-[5] GerwynnG, “GloVe Wikipedia 2014 + Gigaword 5,” Kaggle, 2023, accessed: 09/05/2025. [Online]. Available: https://www.kaggle.com/datasets/gerwynng/glove-wikipedia-2014-gigaword-5
+<a name="ref5"></a> [5] GerwynnG, “GloVe Wikipedia 2014 + Gigaword 5,” Kaggle, 2023, accessed: 09/05/2025. [Online]. Available: https://www.kaggle.com/datasets/gerwynng/glove-wikipedia-2014-gigaword-5 
 
-[6] Facebook AI, “facebook/bart-large-mnli,” Hugging Face, accessed: 09/05/2025. [Online]. Available: https://huggingface.co/facebook/bart-large-mnli
+<a name="ref6"></a> [6] Facebook AI, “facebook/bart-large-mnli,” Hugging Face, accessed: 09/05/2025. [Online]. Available: https://huggingface.co/facebook/bart-large-mnli  
 
-[7] NYU MLL, “multi_nli,” Hugging Face Datasets, accessed: 09/05/2025. [Online]. Available: https://huggingface.co/datasets/nyu-mll/multi_nli
+<a name="ref7"></a> [7] NYU MLL, “multi_nli,” Hugging Face Datasets, accessed: 09/05/2025. [Online]. Available: https://huggingface.co/datasets/nyu-mll/multi_nli
 
-[8] Sentence-Transformers, “all-MiniLM-L6-v2,” Hugging Face, accessed: 09/05/2025. [Online]. Available: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
+<a name="ref8"></a> [8] Sentence-Transformers, “all-MiniLM-L6-v2,” Hugging Face, accessed: 09/05/2025. [Online]. Available: https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2
